@@ -1,0 +1,74 @@
+[
+  {
+    "scenario_id": "demo_b_toronto_london",
+    "name": "Toronto, Canada → London, UK (Cross-Border Relocation)",
+    "description": "Moving with spouse, two children, and vehicle in three months. Need school, housing, visa, banking, healthcare, and auto export/import.",
+    "raw_input": "I am moving from Toronto, Canada to London, UK in three months with my spouse and two children. I have a car and need to find a school, arrange housing, understand government/document requirements, manage banking and insurance, and organize the relocation.",
+    "origin": "Toronto, Ontario, Canada",
+    "destination": "London, England, United Kingdom",
+    "is_cross_border": true,
+    "affected_people": {"spouse": 1, "children": 2},
+    "assets": ["vehicle"],
+    "domains": ["Immigration", "Housing", "Education", "Government", "Banking", "Healthcare", "Transportation"]
+  },
+  {
+    "scenario_id": "demo_a_ny_ca",
+    "name": "New York → California (Domestic US Relocation)",
+    "description": "Relocating state-to-state within USA for a new tech job in San Francisco.",
+    "raw_input": "I am moving from New York to California next month for a new job in San Francisco. Need housing, state tax change, DMV driver's license transfer, and voter registration.",
+    "origin": "New York, NY, United States",
+    "destination": "San Francisco, CA, United States",
+    "is_cross_border": false,
+    "affected_people": {"spouse": 0, "children": 0},
+    "assets": [],
+    "domains": ["Housing", "Government", "Employment", "Transportation", "Tax Administration"]
+  },
+  {
+    "scenario_id": "demo_c_tokyo_singapore",
+    "name": "Tokyo, Japan → Singapore (Cross-Border Employment)",
+    "description": "Expat relocating from Tokyo to Singapore on an Employment Pass.",
+    "raw_input": "Moving from Tokyo, Japan to Singapore for an executive position starting in two months. Need Employment Pass issuance, EP Card appointment, condo rental, and tax resident registration.",
+    "origin": "Tokyo, Japan",
+    "destination": "Singapore",
+    "is_cross_border": true,
+    "affected_people": {"spouse": 1, "children": 0},
+    "assets": [],
+    "domains": ["Immigration", "Housing", "Employment", "Tax Administration", "Banking"]
+  },
+  {
+    "scenario_id": "demo_d_saopaulo_lisbon",
+    "name": "São Paulo, Brazil → Lisbon, Portugal (Cross-Border Retirement/D7)",
+    "description": "Relocating from Brazil to Portugal under D7 passive income visa.",
+    "raw_input": "Estou me mudando de São Paulo, Brasil para Lisboa, Portugal. Preciso obter o NIF, abrir conta bancária em Portugal, arrendar imóvel e registrar no SNS (Serviço Nacional de Saúde).",
+    "origin": "São Paulo, Brazil",
+    "destination": "Lisbon, Portugal",
+    "is_cross_border": true,
+    "affected_people": {"spouse": 1, "children": 0},
+    "assets": [],
+    "domains": ["Immigration", "Banking", "Housing", "Healthcare", "Government"]
+  },
+  {
+    "scenario_id": "demo_e_dubai_sydney",
+    "name": "Dubai, UAE → Sydney, Australia (Cross-Border Relocation)",
+    "description": "Relocating from Dubai to Sydney with pet dog and school-age child.",
+    "raw_input": "I am moving from Dubai, UAE to Sydney, Australia with my spouse, one child, and a dog. Need pet quarantine clearance, school enrolment in NSW, Medicare registration, and housing lease.",
+    "origin": "Dubai, United Arab Emirates",
+    "destination": "Sydney, New South Wales, Australia",
+    "is_cross_border": true,
+    "affected_people": {"spouse": 1, "children": 1},
+    "assets": ["pet"],
+    "domains": ["Immigration", "Pet Relocation", "Education", "Healthcare", "Housing", "Banking"]
+  },
+  {
+    "scenario_id": "demo_f_london_singapore_biz",
+    "name": "London, UK → Singapore (Business Company Relocation)",
+    "description": "Relocating corporate headquarters/subsidiary from UK to Singapore ACRA.",
+    "raw_input": "I'm moving my fintech startup company from London, UK to Singapore. Need company registration with ACRA, corporate bank account, employment passes for 5 core team members, and commercial office space.",
+    "origin": "London, United Kingdom",
+    "destination": "Singapore",
+    "is_cross_border": true,
+    "affected_people": {"employees": 5},
+    "assets": ["business"],
+    "domains": ["Business Relocation", "Employment", "Finance", "Tax Information", "Government"]
+  }
+]

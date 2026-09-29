@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Life Event AI Orchestrator</title>
+  <meta name="description" content="One life event. Every task. Any country. One intelligent plan. AI-powered global life event orchestration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- TOP NAVIGATION & HEADER -->
+    <header class="glass-header">
+      <div class="logo-group">
+        <div class="logo-icon">🌍</div>
+        <div>
+          <h1 class="logo-title">GLOBAL LIFE EVENT <span class="accent-text">AI ORCHESTRATOR</span></h1>
+          <p class="tagline">One life event. Every task. Any country. One intelligent plan.</p>
+        </div>
+      </div>
+      
+      <div class="header-controls">
+        <div class="control-badge"><span class="pulse-dot"></span> GCP Agent Runtime</div>
+        
+        <div class="selector-wrapper">
+          <label for="lang-select">Language:</label>
+          <select id="lang-select" class="glass-select">
+            <option value="en" selected>English</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="fr">Français (French)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="pt">Português (Portuguese)</option>
+            <option value="hi">Hindi (हिन्दी)</option>
+            <option value="ja">Japanese (日本語)</option>
+            <option value="ar">Arabic (العربية)</option>
+          </select>
+        </div>
+
+        <button id="btn-run-eval" class="btn-secondary">🧪 Run 50 Eval Suite</button>
+      </div>
+    </header>
+
+    <!-- MAIN ORCHESTRATOR PROMPT & DEMO SELECTOR -->
+    <section class="prompt-section glass-panel">
+      <div class="section-top-bar">
+        <h2>Describe Your Life Event</h2>
+        <div class="demo-picker">
+          <span class="demo-label">Load Global Demo Scenario:</span>
+          <select id="demo-select" class="glass-select accent-border">
+            <option value="" disabled selected>Select a pre-built scenario...</option>
+            <option value="demo_b_toronto_london">🇨🇦 Toronto → 🇬🇧 London (Family + Car Cross-Border)</option>
+            <option value="demo_a_ny_ca">🇺🇸 New York → 🇺🇸 California (Domestic Move)</option>
+            <option value="demo_c_tokyo_singapore">🇯🇵 Tokyo → 🇸🇬 Singapore (Expat Employment Pass)</option>
+            <option value="demo_d_saopaulo_lisbon">🇧🇷 São Paulo → 🇵🇹 Lisbon (Portuguese D7 Retirement)</option>
+            <option value="demo_e_dubai_sydney">🇦🇪 Dubai → 🇦🇺 Sydney (Pet + Family Relocation)</option>
+            <option value="demo_f_london_singapore_biz">🇬🇧 London → 🇸🇬 Singapore (Corporate Business Move)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <textarea id="event-prompt" placeholder="E.g., I am moving from Toronto, Canada to London, UK in three months with my spouse and two children. I have a car and need to find a school, arrange housing, understand government/document requirements, manage banking and insurance, and organize the relocation..."></textarea>
+        <div class="input-actions">
+          <div class="quick-tags">
+            <span class="tag" onclick="appendTag('with my spouse and two children')">+ Family (2 Kids)</span>
+            <span class="tag" onclick="appendTag('I have a car and need vehicle registration')">+ Vehicle</span>
+            <span class="tag" onclick="appendTag('I am relocating my dog and need pet quarantine checklist')">+ Pet</span>
+            <span class="tag" onclick="appendTag('I am moving my business startup company')">+ Company</span>
+          </div>
+          <button id="btn-orchestrate" class="btn-primary">⚡ Generate Execution Plan</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENT DASHBOARD (RENDERED DYNAMICALLY) -->
+    <main id="event-dashboard" class="dashboard-area hidden">
+      <!-- SUMMARY HERO CARD -->
+      <section class="hero-summary-panel glass-panel">
+        <div class="summary-header">
+          <div class="title-meta">
+            <span id="event-type-badge" class="badge badge-crossborder">CROSS BORDER</span>
+            <h2 id="event-title">Life Event Execution Plan</h2>
+          </div>
+          <button id="btn-simulate-source-change" class="btn-warning">🚨 Simulate Requirement Source Change</button>
+        </div>
+
+        <div class="jurisdiction-grid">
+          <div class="jurisdiction-card origin-card">
+            <div class="juris-label">ORIGIN JURISDICTION</div>
+            <div id="origin-juris-name" class="juris-name">Toronto, Ontario, Canada</div>
+            <div id="origin-juris-meta" class="juris-meta">Currency: CAD | Language: English | Timezone: America/Toronto</div>
+          </div>
+
+          <div class="arrow-divider">➔</div>
+
+          <div class="jurisdiction-card dest-card">
+            <div class="juris-label">DESTINATION JURISDICTION</div>
+            <div id="dest-juris-name" class="juris-name">London, England, United Kingdom</div>
+            <div id="dest-juris-meta" class="juris-meta">Currency: GBP | Language: English | Timezone: Europe/London</div>
+          </div>
+        </div>
+
+        <div class="metrics-row">
+          <div class="metric-box">
+            <span class="metric-val" id="val-tasks-count">0</span>
+            <span class="metric-lbl">Tasks Generated</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val" id="val-agents-count">0</span>
+            <span class="metric-lbl">Specialist Agents</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val" id="val-citations-count">0</span>
+            <span class="metric-lbl">Authority Sources</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val" id="val-approvals-count">0</span>
+            <span class="metric-lbl">Human Approvals</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- NAVIGATION TABS -->
+      <nav class="tabs-nav">
+        <button class="tab-btn active" data-tab="tab-tasks">📋 Execution Graph & Tasks</button>
+        <button class="tab-btn" data-tab="tab-a2a">🤖 A2A Agent Network</button>
+        <button class="tab-btn" data-tab="tab-rag">📚 RAG Sources & Citations</button>
+        <button class="tab-btn" data-tab="tab-mcp">🛠️ MCP Tools & Approvals</button>
+        <button class="tab-btn" data-tab="tab-activity">📈 Agent Activity Log</button>
+      </nav>
+
+      <!-- TAB 1: EXECUTION GRAPH & TASKS -->
+      <section id="tab-tasks" class="tab-content active glass-panel">
+        <div class="panel-head">
+          <h3>Prioritized Task Dependency Graph</h3>
+          <span class="help-text">Click on any task to view authority citations or trigger human approval.</span>
+        </div>
+        
+        <div id="dependency-graph-container" class="graph-box">
+          <!-- Render SVG graph nodes dynamically -->
+        </div>
+
+        <div id="tasks-list" class="tasks-container">
+          <!-- Render Task Cards dynamically -->
+        </div>
+      </section>
+
+      <!-- TAB 2: A2A NETWORK -->
+      <section id="tab-a2a" class="tab-content glass-panel">
+        <div class="panel-head">
+          <h3>A2A (Agent-to-Agent) Inter-Agent Communication Network</h3>
+          <span class="help-text">Registered Agent Cards operating over A2A protocol.</span>
+        </div>
+        <div id="a2a-cards-grid" class="cards-grid">
+          <!-- Render A2A Agent Cards -->
+        </div>
+      </section>
+
+      <!-- TAB 3: RAG SOURCES -->
+      <section id="tab-rag" class="tab-content glass-panel">
+        <div class="panel-head">
+          <h3>Verified RAG Authority Knowledge Sources</h3>
+          <span class="help-text">Governing documents retrieved with authority level scoring & temporal freshness.</span>
+        </div>
+        <div id="rag-sources-grid" class="sources-grid">
+          <!-- Render RAG Sources -->
+        </div>
+      </section>
+
+      <!-- TAB 4: MCP TOOLS -->
+      <section id="tab-mcp" class="tab-content glass-panel">
+        <div class="panel-head">
+          <h3>Model Context Protocol (MCP) Tool Registry</h3>
+          <span class="help-text">Gated execution: READ_ONLY queries run automatically, ACTION tools require human sign-off.</span>
+        </div>
+        <div id="mcp-tools-grid" class="mcp-grid">
+          <!-- Render MCP Tools -->
+        </div>
+      </section>
+
+      <!-- TAB 5: AGENT ACTIVITY -->
+      <section id="tab-activity" class="tab-content glass-panel">
+        <div class="panel-head">
+          <h3>Agent Execution Activity Stream</h3>
+          <span class="help-text">Real-time trace logs of reasoning, delegation, and tool execution durations.</span>
+        </div>
+        <div id="activity-stream" class="activity-timeline">
+          <!-- Render Activity Steps -->
+        </div>
+      </section>
+    </main>
+
+    <!-- EVALUATION SUITE MODAL -->
+    <div id="eval-modal" class="modal-overlay hidden">
+      <div class="modal-card glass-panel">
+        <div class="modal-head">
+          <h3>🧪 50-Scenario Benchmark Evaluation Suite</h3>
+          <button class="modal-close" onclick="closeEvalModal()">×</button>
+        </div>
+        <div id="eval-results-body">
+          <p>Running benchmark across 50 international jurisdictions...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
